@@ -4,9 +4,13 @@ const apiListas = 'https://api.nytimes.com/svc/books/v3/lists/names.json?api-key
 const contenedorListas = document.querySelector("#contenedorListas")
 const apiBase = 'https://api.nytimes.com/svc/books/v3/lists/current/'
 const apiResto = '.json?api-key=k502PVGEDLfvNM0EWebLO6Lt9TUUfJAA'
+const loader = document.querySelector("#loader")
 
 //EVENTOS
 
+loader.addEventListener('click', () =>{
+    loader.remove()
+})
 
 //FUNCIONES
 
@@ -29,7 +33,6 @@ const getListas = async () => {
 
 getListas()
     .then((resp) => {
-        console.log(resp);
         resp.forEach(element => {
             const elementoContainer = document.createElement('div')
             const tituloLista =  document.createElement('h3')
@@ -49,7 +52,6 @@ getListas()
                 window.location.href = url;
             });
             
-
             contenedorListas.append(elementoContainer)
             elementoContainer.append(tituloLista, fechaAntiguo, fechaNuevo, actualizacion, linkLista)
 
@@ -58,4 +60,5 @@ getListas()
     .catch((error) => {
         console.log(error);
     });
+
 

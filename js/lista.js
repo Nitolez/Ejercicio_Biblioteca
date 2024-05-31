@@ -1,3 +1,4 @@
+//VARIABLES
 // Obtener el nombre de la lista de la URL
 const urlParams = new URLSearchParams(window.location.search);
 const listNameEncoded = urlParams.get('list');
@@ -8,14 +9,14 @@ const apiURL = `${apiBase}${listNameEncoded}${apiResto}`;
 
 const contenedorLibros = document.querySelector("#contenedorLibros");
 
-
 //EVENTOS
 
 document.getElementById('botonAtras').addEventListener('click', () => {
     history.back();
 });
 
-// Función para obtener y mostrar los libros de la lista
+
+//FUNCIONES
 const getLibros = async () => {
     try {
         const respuesta = await fetch(apiURL);
@@ -23,24 +24,45 @@ const getLibros = async () => {
         if (respuesta.ok) {
             const data = await respuesta.json();
             const libros = data.results.books;
-
-            libros.forEach(libro => {
-                const libroContainer = document.createElement('div');
-                const tituloLibro = document.createElement('h3');
-                const descripcionLibro = document.createElement('p');
-                
-                tituloLibro.innerText = libro.title;
-                descripcionLibro.innerText = libro.description;
-
-                libroContainer.append(tituloLibro, descripcionLibro);
-                contenedorLibros.append(libroContainer);
-            });
+            return libros
         } else {
-            throw new Error('Error al obtener los libros');
+            throw console.log('Error al obtener los libros');
         }
     } catch (error) {
         console.log(error);
-    }
-};
+    };
+}
 
-getLibros();
+getLibros()
+    .then((resp2) => {
+            resp2.forEach(libro => {
+                const libroContainer = document.createElement('div');
+                const imgLibro = document.createElement('img')
+                const semanasEnLista = document.createElement('p')
+                const descripcionLibro = document.createElement('p');
+                const tituloLibro = document.createElement('h3');
+                const posicionLista = document.createElement('p')
+                const enlace = document.createElement('a')
+                const linkAmazon = document.createElement('button')
+                
+                imgLibro.src = libro.book_image
+                semanasEnLista.innerText = 'SEMANAS EN LISTA: ' + libro.weeks_on_list
+                tituloLibro.innerText = libro.title;
+                descripcionLibro.innerText = libro.description;
+                posicionLista.innerHTML = '#' + libro.rank
+                linkAmazon.innerText = 'CÓMPRALO EN AMAZON'
+                enlace.href = libro.amazon_product_url
+                enlace.target = "_blank"
+                descripcionLibro.classList.add('descripcion');
+
+                contenedorLibros.append(libroContainer);
+                libroContainer.append(posicionLista, tituloLibro, imgLibro, semanasEnLista, descripcionLibro, enlace);
+                enlace.append(linkAmazon)
+
+            });
+
+    })
+    .catch((error) => {
+        console.log(error);
+        contenedorLibros.innerHTML = '<p>Error al cargar los libros.</p>';
+    })
