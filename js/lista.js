@@ -29,7 +29,7 @@ const getLibros = async () => {
             throw console.log('Error al obtener los libros');
         }
     } catch (error) {
-        console.log(error);
+        console.log("error");
     };
 }
 
@@ -64,5 +64,4 @@ getLibros()
     })
     .catch((error) => {
         console.log(error);
-        contenedorLibros.innerHTML = '<p>Error al cargar los libros.</p>';
     })
