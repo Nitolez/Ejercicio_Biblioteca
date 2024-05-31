@@ -2,11 +2,10 @@
 //VARIABLES
 const apiListas = 'https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=k502PVGEDLfvNM0EWebLO6Lt9TUUfJAA'
 const contenedorListas = document.querySelector("#contenedorListas")
+const apiBase = 'https://api.nytimes.com/svc/books/v3/lists/current/'
+const apiResto = '.json?api-key=k502PVGEDLfvNM0EWebLO6Lt9TUUfJAA'
 
 //EVENTOS
-
-
-
 
 
 //FUNCIONES
@@ -44,17 +43,19 @@ getListas()
             fechaNuevo.innerText = 'NEWEST: ' + element.newest_published_date;
             actualizacion.innerText = 'UPDATED: ' + element.updated;
             linkLista.innerText = 'VER MÁS ->'
-            //falta el boton de link listas
             
-            contenedorListas.append(elementoContainer, tituloLista, fechaAntiguo, fechaNuevo, actualizacion, linkLista)
+            linkLista.addEventListener('click', () => {
+                const url = `lista.html?list=${element.list_name_encoded}`;
+                window.location.href = url;
+            });
+            
+
+            contenedorListas.append(elementoContainer)
+            elementoContainer.append(tituloLista, fechaAntiguo, fechaNuevo, actualizacion, linkLista)
 
         });
     })
     .catch((error) => {
         console.log(error);
     });
-
-
-
-
 
