@@ -7,7 +7,6 @@ const apiBase = 'https://api.nytimes.com/svc/books/v3/lists/current/';
 const apiResto = '.json?api-key=k502PVGEDLfvNM0EWebLO6Lt9TUUfJAA';
 const apiURL = `${apiBase}${listNameEncoded}${apiResto}`;
 
-const contenedorLibros = document.querySelector("#contenedorLibros");
 
 //EVENTOS
 
@@ -35,8 +34,9 @@ const getLibros = async () => {
 
 getLibros()
     .then((resp2) => {
+        const contenedorLibros = document.querySelector("#contenedorLibros");
             resp2.forEach(libro => {
-                const libroContainer = document.createElement('div');
+                const libroContainer = document.createElement('article');
                 const imgLibro = document.createElement('img')
                 const semanasEnLista = document.createElement('p')
                 const descripcionLibro = document.createElement('p');

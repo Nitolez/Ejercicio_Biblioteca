@@ -41,7 +41,7 @@ h2 {
     gap: 10px; /* Espacio entre los elementos */
 }
 
-#contenedorListas div {
+#contenedorListas article {
     box-shadow: 10px 5px 5px #CABD91;
     padding: 50px;
     align-items: center;

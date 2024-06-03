@@ -34,7 +34,7 @@ const getListas = async () => {
 getListas()
     .then((resp) => {
         resp.forEach(element => {
-            const elementoContainer = document.createElement('div')
+            const elementoContainer = document.createElement('article')
             const tituloLista =  document.createElement('h3')
             const fechaAntiguo = document.createElement('p')
             const fechaNuevo = document.createElement('p')
