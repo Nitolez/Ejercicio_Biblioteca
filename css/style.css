@@ -155,4 +155,21 @@ button:hover {
     z-index: 9999;
     background: rgba(255, 255, 255, 0.7) url('../como-hacer-loader-cargador-sencillo-html.gif') center no-repeat;
   }
-  
+  #filtros {
+    display: block;
+    padding: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+}
+  #updated {
+    background-color: rgb(255, 119, 0);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Transición suave */
+    box-shadow: 10px 5px 5px #CABD91;
+}
