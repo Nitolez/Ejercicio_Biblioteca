@@ -1,6 +1,6 @@
 //PINTAR LISTAS
 //VARIABLES
-const apiListas = 'https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=k502PVGEDLfvNM0EWebLO6Lt9TUUfJAA'
+//const apiListas = 'https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=k502PVGEDLfvNM0EWebLO6Lt9TUUfJAA'
 const contenedorListas = document.querySelector("#contenedorListas")
 const apiBase = 'https://api.nytimes.com/svc/books/v3/lists/current/'
 const apiResto = '.json?api-key=k502PVGEDLfvNM0EWebLO6Lt9TUUfJAA'
@@ -125,7 +125,7 @@ filtroUpdated.addEventListener('change', (ev) => {
 //Almacenar y pintar las listas en un array
 const getListas = async () => {
     try {
-        const respuesta = await fetch(apiListas);
+        const respuesta = await fetch("../js/text.json");
 
         if (respuesta.ok) {
             const data = await respuesta.json();

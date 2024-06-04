@@ -38,7 +38,6 @@ h2 {
     color: grey;
 }
 
-
 #contenedorLibros {
     width: 100%;
     background-color: #FFF0BE;
@@ -56,7 +55,6 @@ h2 {
     width: 200px;
     height: 300px;
     justify-content: center;
-
 }
 
 .contenedorLibros p.descripcion {
@@ -112,7 +110,6 @@ button:hover {
     background-color: #e6830e;
 }
 
-/*Rainbow*/
 *,
 *::before,
 *::after {
@@ -175,5 +172,78 @@ button:hover {
     100% {
         -webkit-transform: rotate(1turn);
         transform: rotate(1turn);
+    }
+}
+
+/* Media Queries */
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    h1 {
+        font-size: 50px;
+    }
+    h2, #bottom {
+        font-size: 18px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    #contenedorLibros {
+        grid-template-columns: 1fr;
+    }
+    #contenedorLibros img {
+        width: 100%;
+        height: auto;
+    }
+    .contenedorLibros p.descripcion {
+        width: auto;
+        height: auto;
+    }
+    #contenedorLibros article {
+        padding: 20px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    h1 {
+        font-size: 75px;
+    }
+    h2, #bottom {
+        font-size: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    #contenedorLibros {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    h1 {
+        font-size: 85px;
+    }
+    h2, #bottom {
+        font-size: 22px;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+    #contenedorLibros {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 100px;
+    }
+    h2, #bottom {
+        font-size: 24px;
+        margin-left: 400px;
+        margin-right: 400px;
+    }
+    #contenedorLibros {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
