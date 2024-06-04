@@ -13,111 +13,21 @@ optionWeekly.value = 'weekly'
 optionMonthly.innerText = 'MONTHLY'
 optionWeekly.innerText = 'WEEKLY'
 filtroUpdated.append(optionWeekly, optionMonthly)
+const botonSortAZ = document.getElementById('sortAZ');
+const botonSortZA = document.getElementById('sortZA');
 
 //EVENTOS
+
+document.getElementById('botonFinal').addEventListener('click', () => {
+    window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+    });
+});
 
 loader.addEventListener('click', () => {
     loader.remove()
 })
-
-filtroUpdated.addEventListener('change', (ev) => {
-    if (ev.target.value === "default") {
-        contenedorListas.innerHTML = ''
-        getListas()
-            .then((resp) => {
-                resp.forEach(element => {
-                    const elementoContainer = document.createElement('article')
-                    const tituloLista = document.createElement('h3')
-                    const fechaAntiguo = document.createElement('p')
-                    const fechaNuevo = document.createElement('p')
-                    const actualizacion = document.createElement('p')
-                    const linkLista = document.createElement('button')
-
-                    elementoContainer.id = element.list_name;
-                    tituloLista.innerText = element.list_name;
-                    fechaAntiguo.innerText = 'OLDEST: ' + element.oldest_published_date;
-                    fechaNuevo.innerText = 'NEWEST: ' + element.newest_published_date;
-                    actualizacion.innerText = 'UPDATED: ' + element.updated;
-                    linkLista.innerText = 'VER MÁS ->'
-
-
-                    linkLista.addEventListener('click', () => {
-                        const url = `lista.html?list=${element.list_name_encoded}`;
-                        window.location.href = url;
-                    });
-
-                    contenedorListas.append(elementoContainer)
-                    elementoContainer.append(tituloLista, fechaAntiguo, fechaNuevo, actualizacion, linkLista)
-
-                });
-            })
-    } else if (ev.target.value === 'monthly') {
-        contenedorListas.innerHTML = ''
-        getListas()
-        .then((resp) => {
-            console.log(resp)
-            resp.forEach(element => {
-
-                const elementoContainer = document.createElement('article')
-                const tituloLista = document.createElement('h3')
-                const fechaAntiguo = document.createElement('p')
-                const fechaNuevo = document.createElement('p')
-                const actualizacion = document.createElement('p')
-                const linkLista = document.createElement('button')
-
-                elementoContainer.id = element.list_name;
-                tituloLista.innerText = element.list_name;
-                fechaAntiguo.innerText = 'OLDEST: ' + element.oldest_published_date;
-                fechaNuevo.innerText = 'NEWEST: ' + element.newest_published_date;
-                actualizacion.innerText = 'UPDATED: ' + element.updated;
-                linkLista.innerText = 'VER MÁS ->'
-
-
-                linkLista.addEventListener('click', () => {
-                    const url = `lista.html?list=${element.list_name_encoded}`;
-                    window.location.href = url;
-                });
-
-                if(element.updated === 'MONTHLY'){ 
-                contenedorListas.append(elementoContainer)
-                elementoContainer.append(tituloLista, fechaAntiguo, fechaNuevo, actualizacion, linkLista)
-
-        }});
-        })
-    } else if (ev.target.value === 'weekly') {
-        contenedorListas.innerHTML = ''
-        getListas()
-        .then((resp) => {
-            console.log(resp)
-            resp.forEach(element => {
-
-                const elementoContainer = document.createElement('article')
-                const tituloLista = document.createElement('h3')
-                const fechaAntiguo = document.createElement('p')
-                const fechaNuevo = document.createElement('p')
-                const actualizacion = document.createElement('p')
-                const linkLista = document.createElement('button')
-
-                elementoContainer.id = element.list_name;
-                tituloLista.innerText = element.list_name;
-                fechaAntiguo.innerText = 'OLDEST: ' + element.oldest_published_date;
-                fechaNuevo.innerText = 'NEWEST: ' + element.newest_published_date;
-                actualizacion.innerText = 'UPDATED: ' + element.updated;
-                linkLista.innerText = 'VER MÁS ->'
-
-
-                linkLista.addEventListener('click', () => {
-                    const url = `lista.html?list=${element.list_name_encoded}`;
-                    window.location.href = url;
-                });
-
-                if(element.updated === 'WEEKLY'){ 
-                contenedorListas.append(elementoContainer)
-                elementoContainer.append(tituloLista, fechaAntiguo, fechaNuevo, actualizacion, linkLista)
-
-        }});
-        })
-}})
 
 
 //FUNCIONES
@@ -129,9 +39,7 @@ const getListas = async () => {
 
         if (respuesta.ok) {
             const data = await respuesta.json();
-            const arrayListas = data.results;
-
-            return arrayListas;
+            return data.results;
         } else {
             throw console.log('Error al obtener las listas');
         }
@@ -139,43 +47,82 @@ const getListas = async () => {
         console.log(error);
     }
 };
+const pintarListas = (listas) => {
+    contenedorListas.innerHTML = '';
+    listas.forEach(element => {
+        const elementoContainer = crearElementoLista(element);
+        contenedorListas.append(elementoContainer);
+    });
+};
 
-getListas()
-    .then((resp) => {
-        resp.forEach(element => {
-            const elementoContainer = document.createElement('article')
-            const tituloLista = document.createElement('h3')
-            const fechaAntiguo = document.createElement('p')
-            const fechaNuevo = document.createElement('p')
-            const actualizacion = document.createElement('p')
-            const linkLista = document.createElement('button')
+const crearElementoLista = (element) => {
+    const elementoContainer = document.createElement('article');
+    const tituloLista = document.createElement('h3');
+    const fechaAntiguo = document.createElement('p');
+    const fechaNuevo = document.createElement('p');
+    const actualizacion = document.createElement('p');
+    const linkLista = document.createElement('button');
 
-            elementoContainer.id = element.list_name;
-            tituloLista.innerText = element.list_name;
-            fechaAntiguo.innerText = 'OLDEST: ' + element.oldest_published_date;
-            fechaNuevo.innerText = 'NEWEST: ' + element.newest_published_date;
-            actualizacion.innerText = 'UPDATED: ' + element.updated;
-            linkLista.innerText = 'VER MÁS ->'
+    elementoContainer.id = element.list_name;
+    tituloLista.innerText = element.list_name;
+    fechaAntiguo.innerText = 'OLDEST: ' + element.oldest_published_date;
+    fechaNuevo.innerText = 'NEWEST: ' + element.newest_published_date;
+    actualizacion.innerText = 'UPDATED: ' + element.updated;
+    linkLista.innerText = 'VER MÁS ->';
 
-
-            linkLista.addEventListener('click', () => {
-                const url = `lista.html?list=${element.list_name_encoded}`;
-                window.location.href = url;
-            });
-
-            contenedorListas.append(elementoContainer)
-            elementoContainer.append(tituloLista, fechaAntiguo, fechaNuevo, actualizacion, linkLista)
-
-        });
-    })
-    .catch((error) => {
-        console.log(error);
+    linkLista.addEventListener('click', () => {
+        const url = `lista.html?list=${element.list_name_encoded}`;
+        window.location.href = url;
     });
 
+    elementoContainer.append(tituloLista, fechaAntiguo, fechaNuevo, actualizacion, linkLista);
+    return elementoContainer;
+};
+
+// Función para ordenar listas A-Z
+const ordenarAZ = (listas) => {
+    return listas.sort((a, b) => a.list_name.localeCompare(b.list_name));
+};
+
+// Función para ordenar listas Z-A
+const ordenarZA = (listas) => {
+    return listas.sort((a, b) => b.list_name.localeCompare(a.list_name));
+};
+
+// Eventos de ordenación
+botonSortAZ.addEventListener('click', async () => {
+    const listas = await getListas();
+    const listasOrdenadas = ordenarAZ(listas);
+    pintarListas(listasOrdenadas);
+});
+
+botonSortZA.addEventListener('click', async () => {
+    const listas = await getListas();
+    const listasOrdenadas = ordenarZA(listas);
+    pintarListas(listasOrdenadas);
+});
+
+// Inicializar listas al cargar la página
+getListas()
+    .then(pintarListas)
+    .catch(console.error);
+
+filtroUpdated.addEventListener('change', async (ev) => {
+    const listas = await getListas();
+    let listasFiltradas;
+
+    if (ev.target.value === "default") {
+        listasFiltradas = listas;
+    } else if (ev.target.value === 'monthly') {
+        listasFiltradas = listas.filter(element => element.updated === 'MONTHLY');
+    } else if (ev.target.value === 'weekly') {
+        listasFiltradas = listas.filter(element => element.updated === 'WEEKLY');
+    }
+
+    pintarListas(listasFiltradas);
+});
 
 /*Vista categorías
-- Filtro por weekly/monthly
-- Filtro por categoría. Puede haber selección múltiple
 - Ordenar ascendente/descendente por oldest_published_date
 - Ordenar ascendente/descendente por newest_published_date
 - Ordenar categoria A-Z, Z-A
