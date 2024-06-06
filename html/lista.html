@@ -16,9 +16,29 @@
         <h2 id="bottom">Lista de Libros</h2>
     </header>
     <main>
+        <div id="filtros">
+            <select id="updated">
+                <option value="default">UPDATED</option>
+            </select>
+            <button id="sortAZ">Ordenar A-Z</button>
+            <button id="sortZA">Ordenar Z-A</button>
+        </div>
         <section id="contenedorLibros"></section>
     </main>
     <script src="../js/lista.js"></script>
 </body>
-
+<div id="container">
+    <div id="paginacion">
+        <button class="btn1">BACK</button>
+        <ul>
+            <li class="link active" value="1"></li>
+            <li class="link" value="2">2</li>
+            <li class="link" value="3">3</li>
+            <li class="link" value="4">4</li>
+            <li class="link" value="5">5</li>
+            <li class="link" value="6">6</li>
+        </ul>
+        <button class="btn2">NEXT</button>
+    </div>
+</div>
 </html>

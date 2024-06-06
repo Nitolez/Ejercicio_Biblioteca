@@ -44,6 +44,12 @@ h2 {
     padding: 50px;
     align-items: center;
 }
+#contenedorListas button{
+    margin-right: 10px;
+}
+#btnFavorito{
+    background-image: linear-gradient(#ff0000, #fc6c37);
+}
 
 .list-box {
     width: 150px;
@@ -70,8 +76,8 @@ p {
     color: #555;
 }
 
-button {
-    background-color: #f90;
+button, select{
+    background-image: linear-gradient(#ff7b00, #ffb52c);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -178,11 +184,11 @@ footer p{
     padding: 10px;
     background-color: white;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-evenly;
 }
 
-#updated {
-    background-color: rgb(255, 119, 0);
+#updated, #filtros button{
+    background-image: linear-gradient(#ff7b00, #ffb52c);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -206,10 +212,14 @@ footer p{
     color: #383838;
     padding: 10px, 40px;
     border-radius: 6px;
+    justify-content: space-evenly
 }
 #paginacion ul{
     margin: 20px 30px;
 }
+.icocor3 {
+    font-size: 30px;
+} 
 #paginacion ul li {
     display: inline-block;
     margin: 0 10px;
@@ -222,11 +232,7 @@ footer p{
     line-height: 45px;
     cursor: pointer;
 }
-#paginacion ul li.active{
-    color: #fff;
-    background-image: linear-gradient(#ff7b00, #ffb52c);
-    background-repeat: no-repeat;
-}
+
 .btn1, .btn2{
     display: inline-flex;
     align-items: center;

@@ -15,29 +15,32 @@
         <h2>NYTimes</h2>
         <h1>BEST SELLERS</h1>
     </header>
+    <main>
     <div id="filtros">
         <select id="updated">
-            <option value="default">UPDATED</option>
+            <option value="default">FILTER UPDATED</option>
         </select>
-        <button id="sortAZ">Ordenar A-Z</button>
-        <button id="sortZA">Ordenar Z-A</button>
+        <button id="sortAZ">FILTER A-Z</button>
+        <button id="sortZA">FILTER Z-A</button>
+        <select id="orderOldestSelect">
+            <option value="default">FILTER FOR OLDEST</option>
+            <option value="oldestAsc">OLDEST ASC</option>
+            <option value="oldestDesc">OLDEST DES</option>
+        </select>
+        <select id="orderNewestSelect">
+            <option value="default">FILTER FOR NEWEST</option>
+            <option value="newestAsc">NEWEST ASC</option>
+            <option value="newestDesc">NEWEST DES</option>
+        </select>
     </div>
     <section id="contenedorListas"></section>
+    </main> 
     <script src="../js/script.js"></script>
 </body>
-<div id="container">
-    <div id="paginacion">
-        <button class="btn1">BACK</button>
-        <ul>
-            <li class="link active" value="1">1</li>
-            <li class="link" value="2">2</li>
-            <li class="link" value="3">3</li>
-            <li class="link" value="4">4</li>
-            <li class="link" value="5">5</li>
-            <li class="link" value="6">6</li>
-        </ul>
-        <button class="btn2">NEXT</button>
-    </div>
+<div id="paginacion">
+<button id="atras">BACK</button>
+<span id="informacion-pagina"></span>
+<button id="siguiente">NEXT</button>
 </div>
 <footer>
     <p>Creado por Antonio el más guapo de the Bridge</p>
