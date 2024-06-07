@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     //PINTAR LISTAS
-    //VARIABLES
+    //letIABLES
     //const apiListas = 'https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=k502PVGEDLfvNM0EWebLO6Lt9TUUfJAA'
 
     const apiBase = 'https://api.nytimes.com/svc/books/v3/lists/current/'
@@ -26,8 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const elementosPorPagina = 9;
     let paginaActual = 1;
     let baseDeDatos = [];
+    let listaCompleta = [];
+    const textSearch = document.querySelector('#searchText')
+    const searchButton = document.getElementById('searchButton');
 
     //EVENTOS
+
 
     document.getElementById('botonFinal').addEventListener('click', () => {
         window.scrollTo({
@@ -36,33 +40,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    window.addEventListener('scroll', function() {
+        let button = document.getElementById('botonFinal'); // Asigna el ID correcto de tu botón
+        let rainbowBorder = this.document.querySelector('.rainbow');
+        let scrollPosition = window.scrollY
+    
+        if (scrollPosition >= (document.documentElement.scrollHeight - window.innerHeight)) {
+            button.style.display = 'none'; // Oculta el botón cuando se alcanza el final del documento
+            rainbowBorder.style.display = 'none';
+        } else {
+            button.style.display = 'block'; // Muestra el botón en cualquier otra posición
+            rainbowBorder.style.display = 'block';
+        }
+    });
+
     loader.addEventListener('click', () => {
         loader.remove()
     })
 
-     // Reset filters a default
-     const resetFilters = (filtro1, filtro2) => {
+    // Funcion para resetear filters, para ponerla cuando clickemos en cada filtro
+    const resetFilters = (filtro1) => {
         filtro1.value = "default"
-        filtro2.value = "default";
     };
     // Eventos de ordenación
-     orderOldestSelect.addEventListener('change', async () => {
-            const listas = await getListas();
-            let listasOrdenadas;
-            switch (orderOldestSelect.value) {
-                case 'oldestAsc':
-                    listasOrdenadas = ordenarPorFechaMasAntiguaAsc(listas);
-                    break;
-                case 'oldestDesc':
-                    listasOrdenadas = ordenarPorFechaMasAntiguaDesc(listas);
-                    break;
-                default:
-                    listasOrdenadas = listas;
-            }
-            baseDeDatos = listasOrdenadas; // Ordenar y guardar en baseDeDatos
-            paginaActual = 1; // Resetear la página actual
-            renderizar();
-            resetFilters(filtroUpdated, orderNewestSelect)
+    orderOldestSelect.addEventListener('change', async () => {
+        const listas = await getListas();
+        let listasOrdenadas;
+        switch (orderOldestSelect.value) {
+            case 'oldestAsc':
+                listasOrdenadas = ordenarPorFechaMasAntiguaAsc(listas);
+                break;
+            case 'oldestDesc':
+                listasOrdenadas = ordenarPorFechaMasAntiguaDesc(listas);
+                break;
+            default:
+                listasOrdenadas = listas;
+        }
+        baseDeDatos = listasOrdenadas; // Ordenar y guardar en baseDeDatos
+        paginaActual = 1; // Resetear la página actual
+        renderizar();
+        resetFilters(filtroUpdated);
+        resetFilters(orderNewestSelect);
     });
 
     orderNewestSelect.addEventListener('change', async () => {
@@ -81,8 +99,70 @@ document.addEventListener('DOMContentLoaded', () => {
         baseDeDatos = listasOrdenadas; // Ordenar y guardar en baseDeDatos
         paginaActual = 1; // Resetear la página actual
         renderizar();
-        resetFilters(filtroUpdated, orderOldestSelect)
+        resetFilters(filtroUpdated);
+        resetFilters(orderOldestSelect);
     });
+
+    filtroUpdated.addEventListener('change', async (ev) => {
+        resetFilters(orderNewestSelect);
+        resetFilters(orderOldestSelect);
+        filtroUpdated.value = ev.target.value;
+        const listas = await getListas();
+        let listasFiltradas;
+
+        if (ev.target.value === "default") {
+            listasFiltradas = listas;
+        } else if (ev.target.value === 'monthly') {
+            listasFiltradas = listas.filter(element => element.updated === 'MONTHLY');
+        } else if (ev.target.value === 'weekly') {
+            listasFiltradas = listas.filter(element => element.updated === 'WEEKLY');
+        }
+        baseDeDatos = listasFiltradas; // Filtrar y guardar en baseDeDatos
+        paginaActual = 1;
+        pintarListas(listasFiltradas);
+        renderizar()
+    });
+
+    searchButton.addEventListener('click', () => {
+        const textoBusqueda = textSearch.value.trim(); // Obtener el texto de búsqueda
+        const listasFiltradas = filtrarPorTitulo(listaCompleta, textoBusqueda); // Filtrar las listas por título
+        baseDeDatos = listasFiltradas;
+        paginaActual = 1; // Reiniciar la página actual
+        renderizar(); // Volver a renderizar la paginación
+    });
+    //para que al presionar intro se busque
+    textSearch.addEventListener('keydown', (event) => {
+        if (event.key === "Enter") {
+            const textoBusqueda = textSearch.value.trim(); // Obtener el texto de búsqueda
+            const listasFiltradas = filtrarPorTitulo(listaCompleta, textoBusqueda); // Filtrar las listas por título
+            baseDeDatos = listasFiltradas; // Actualizar la lista baseDeDatos con los resultados filtrados
+            paginaActual = 1; // Reiniciar la página actual
+            renderizar(); // Volver a renderizar la paginación
+        }
+    });
+
+    // Eventos de ordenación
+    botonSortAZ.addEventListener('click', async () => {
+        resetFilters(orderNewestSelect);
+        resetFilters(orderOldestSelect);
+        resetFilters(filtroUpdated);
+        const listas = await getListas();
+        baseDeDatos = ordenarAZ(listas); // Ordenar y guardar en baseDeDatos
+        paginaActual = 1; // Resetear la página actual
+        renderizar();
+    });
+
+    botonSortZA.addEventListener('click', async () => {
+        resetFilters(orderNewestSelect);
+        resetFilters(orderOldestSelect);
+        resetFilters(filtroUpdated);
+        const listas = await getListas();
+        baseDeDatos = ordenarZA(listas); // Ordenar y guardar en baseDeDatos
+        paginaActual = 1; // Resetear la página actual
+        renderizar();
+    });
+
+
 
     //FUNCIONES
 
@@ -146,12 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return elementoContainer;
     };
 
+    //FILTROS DE TITULO, AZ Y UPDATED 
 
-
-
-
-
-    //FILTROS AZ Y UPDATED 
+    // Función para filtrar listas por título
+    const filtrarPorTitulo = (listas, textoBusqueda) => {
+        return listas.filter(element => element.list_name.toLowerCase().includes(textoBusqueda.toLowerCase()));
+    };
 
     // Función para ordenar listas A-Z
     const ordenarAZ = (listas) => {
@@ -163,49 +243,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return listas.sort((a, b) => b.list_name.localeCompare(a.list_name));
     };
 
-    // Eventos de ordenación
-    botonSortAZ.addEventListener('click', async () => {
-        resetFilters();
-        const listas = await getListas();
-        baseDeDatos = ordenarAZ(listas); // Ordenar y guardar en baseDeDatos
-        paginaActual = 1; // Resetear la página actual
-        renderizar();
-    });
-
-    botonSortZA.addEventListener('click', async () => {
-        resetFilters();
-        const listas = await getListas();
-        baseDeDatos = ordenarZA(listas); // Ordenar y guardar en baseDeDatos
-        paginaActual = 1; // Resetear la página actual
-        renderizar();
-    });
-
     // Inicializar listas al cargar la página
     getListas()
         .then(listas => {
             baseDeDatos = listas; // Guardar listas en baseDeDatos
+            listaCompleta = listas; // Guardar listas en listaCompleta
             renderizar();
         })
         .catch(console.error);
 
-    filtroUpdated.addEventListener('change', async (ev) => {
-        resetFilters(orderOldestSelect, orderNewestSelect);
-        filtroUpdated.value = ev.target.value;
-        const listas = await getListas();
-        let listasFiltradas;
-
-        if (ev.target.value === "default") {
-            listasFiltradas = listas;
-        } else if (ev.target.value === 'monthly') {
-            listasFiltradas = listas.filter(element => element.updated === 'MONTHLY');
-        } else if (ev.target.value === 'weekly') {
-            listasFiltradas = listas.filter(element => element.updated === 'WEEKLY');
-        }
-        baseDeDatos = listasFiltradas; // Filtrar y guardar en baseDeDatos
-        paginaActual = 1;
-        pintarListas(listasFiltradas);
-        renderizar()
-    });
 
     // Funciones de ordenación por fecha
     const ordenarPorFechaMasAntiguaAsc = (listas) => {
@@ -223,9 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ordenarPorFechaMasNuevaDesc = (listas) => {
         return listas.sort((a, b) => new Date(b.newest_published_date) - new Date(a.newest_published_date));
     };
-
-
-
 
     //PAGINACION
 
@@ -277,28 +320,11 @@ document.addEventListener('DOMContentLoaded', () => {
         informacionPaginaDOM.textContent = `${paginaActual}/${obtenerPaginasTotales()}`;
     }
 
-    // --
     // Eventos
-    // --
     botonAtrasDOM.addEventListener("click", retrocederPagina);
     botonSiguienteDOM.addEventListener("click", avanzarPagina);
 
-    // --
     // Inicio
-    // --
     renderizar(); // Mostramos la primera página nada más que carge la página
 
-
-
-
-    /*Vista categorías
-    - Ordenar ascendente/descendente por oldest_published_date
-    - Ordenar ascendente/descendente por newest_published_date
-    Vista detalle libros
-    - Búsqueda por título
-    - Búqueda por autor
-    - Ordenar autor, título A-Z, Z-A
-    - Paginación: mostrar libros de 5 en 5
-    Meter verificacion
-    */
 })

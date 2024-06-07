@@ -10,39 +10,56 @@
 
 <body>
     <div id="loader"></div>
+    <div id="logDiv">
+        <input type="text" id="user" name="user" placeholder="USER">
+        <input type="text" id="password" name="password" placeholder="PASSWORD">
+        <button id="logButton">LOG IN</button>
+        <button id="regButton">REGISTER</button>
+    </div>
     <header>
         <div class="rainbow"><button id="botonFinal">IR AL FINAL</button></div>
         <h2>NYTimes</h2>
         <h1>BEST SELLERS</h1>
+        <h2 id="bottom">LISTS</h2>
+
     </header>
     <main>
-    <div id="filtros">
-        <select id="updated">
-            <option value="default">FILTER UPDATED</option>
-        </select>
-        <button id="sortAZ">FILTER A-Z</button>
-        <button id="sortZA">FILTER Z-A</button>
-        <select id="orderOldestSelect">
-            <option value="default">FILTER FOR OLDEST</option>
-            <option value="oldestAsc">OLDEST ASC</option>
-            <option value="oldestDesc">OLDEST DES</option>
-        </select>
-        <select id="orderNewestSelect">
-            <option value="default">FILTER FOR NEWEST</option>
-            <option value="newestAsc">NEWEST ASC</option>
-            <option value="newestDesc">NEWEST DES</option>
-        </select>
-    </div>
-    <section id="contenedorListas"></section>
-    </main> 
+        <div id="filtros">
+            <select id="updated">
+                <option value="default">FILTER UPDATED</option>
+            </select>
+            <button id="sortAZ">FILTER A-Z</button>
+            <button id="sortZA">FILTER Z-A</button>
+            <select id="orderOldestSelect">
+                <option value="default">FILTER FOR OLDEST</option>
+                <option value="oldestAsc">OLDEST ASC</option>
+                <option value="oldestDesc">OLDEST DES</option>
+            </select>
+            <select id="orderNewestSelect">
+                <option value="default">FILTER FOR NEWEST</option>
+                <option value="newestAsc">NEWEST ASC</option>
+                <option value="newestDesc">NEWEST DES</option>
+            </select>
+            <div id="searchInput">
+                <input type="text" id="searchText" name="searchText" placeholder="Search list...">
+                <button id="searchButton">SEARCH</button>
+            </div>
+        </div>
+        <section id="contenedorListas"></section>
+    </main>
     <script src="../js/script.js"></script>
 </body>
 <div id="paginacion">
-<button id="atras">BACK</button>
-<span id="informacion-pagina"></span>
-<button id="siguiente">NEXT</button>
+    <button id="atras">BACK</button>
+    <span id="informacion-pagina"></span>
+    <button id="siguiente">NEXT</button>
 </div>
 <footer>
+    <div id="socialMedia">
+        <a href="https://www.linkedin.com/in/antonio-gonz%C3%A1lez-torres-35b74522a/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png" height="50px" width="50px" alt="Linkedin"/></a></li>
+        <a href="https://www.tiktok.com/@nitolez" target="_blank"><img src="https://cdn.pixabay.com/photo/2021/01/30/06/42/tiktok-5962992_1280.png" width="51px" height="51px" alt="tiktok"/></a>
+        <a href="https://www.youtube.com/channel/UCopsTgFu3D_SoIaE7lvwN3Q" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" width="70" height="50" alt="Youtube"></a>
+    </div>
     <p>Creado por Antonio el más guapo de the Bridge</p>
 </footer>
 

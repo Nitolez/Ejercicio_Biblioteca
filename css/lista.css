@@ -194,21 +194,12 @@ button:hover {
     color: #383838;
     padding: 10px, 40px;
     border-radius: 6px;
+    justify-content: center;
+    margin: 6px;
 }
-#paginacion ul{
-    margin: 20px 30px;
-}
-#paginacion ul li {
-    display: inline-block;
-    margin: 0 10px;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 45px;
-    cursor: pointer;
+#paginacion button{
+    margin-right: 30px;
+    margin-left: 30px;
 }
 .btn1, .btn2{
     display: inline-flex;
@@ -222,7 +213,14 @@ button:hover {
     border: none;
     cursor: pointer;
 }
-
+#searchInput{
+    display: flex;
+}
+#searchText{
+    font-family: 'Courier New', Courier, monospace;
+    margin-right: 7px;
+    background-image: linear-gradient(45deg, #ffb700, #fcffb3);
+}
 @-webkit-keyframes rotate {
     100% {
         -webkit-transform: rotate(1turn);
