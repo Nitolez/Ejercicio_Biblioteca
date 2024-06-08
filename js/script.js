@@ -1,7 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // FIREBASE
+    const firebaseConfig = {
+        apiKey: "AIzaSyC3aIRWvrB-lOrrfIKSNY_MORTWPcweN5o",
+        authDomain: "demofirebase-a0725.firebaseapp.com",
+        projectId: "demofirebase-a0725",
+        storageBucket: "demofirebase-a0725.appspot.com",
+        messagingSenderId: "902020080501",
+        appId: "1:902020080501:web:8ffeead08d2e544e26693c"
+    };
+
+    firebase.initializeApp(firebaseConfig);// Inicializaar app Firebase
+
+    const db = firebase.firestore();// db representa mi BBDD //inicia Firestore
+
+
     //PINTAR LISTAS
-    //letIABLES
+    //VARIABLES
     //const apiListas = 'https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=k502PVGEDLfvNM0EWebLO6Lt9TUUfJAA'
 
     const apiBase = 'https://api.nytimes.com/svc/books/v3/lists/current/'
@@ -40,11 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         let button = document.getElementById('botonFinal'); // Asigna el ID correcto de tu botón
         let rainbowBorder = this.document.querySelector('.rainbow');
         let scrollPosition = window.scrollY
-    
+
         if (scrollPosition >= (document.documentElement.scrollHeight - window.innerHeight)) {
             button.style.display = 'none'; // Oculta el botón cuando se alcanza el final del documento
             rainbowBorder.style.display = 'none';

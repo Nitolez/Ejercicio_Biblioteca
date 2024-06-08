@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NYTimes BEST SELLERS</title>
     <link rel="stylesheet" href="../css/style.css">
@@ -10,12 +11,14 @@
 
 <body>
     <div id="loader"></div>
-    <div id="logDiv">
-        <input type="text" id="user" name="user" placeholder="USER">
-        <input type="text" id="password" name="password" placeholder="PASSWORD">
-        <button id="logButton">LOG IN</button>
-        <button id="regButton">REGISTER</button>
-    </div>
+    <form id="form2" action="#" method="POST">
+        <div id="logDiv">
+            <input type="email" id="email2" name="email2" placeholder="EMAIL"><br>
+            <input type="password" id="pass3" name="pass3" placeholder="PASSWORD"><br>
+            <input type="submit" id="submit" value="LOG IN">
+            <button id="regButton">REGISTER</button>
+        </div>
+    </form>
     <header>
         <div class="rainbow"><button id="botonFinal">IR AL FINAL</button></div>
         <h2>NYTimes</h2>
@@ -48,7 +51,6 @@
         <section id="contenedorListas"></section>
     </main>
     <script src="../js/script.js"></script>
-</body>
 <div id="paginacion">
     <button id="atras">BACK</button>
     <span id="informacion-pagina"></span>
@@ -62,5 +64,14 @@
     </div>
     <p>Creado por Antonio el más guapo de the Bridge</p>
 </footer>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
 
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+
+    <script src="./script.js"></script>
+</body>
 </html>
