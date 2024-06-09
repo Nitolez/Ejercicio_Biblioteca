@@ -11,6 +11,7 @@ header {
     text-align: center;
     padding: 20px 0;
 }
+
 #bottom {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 24px;
@@ -20,6 +21,7 @@ header {
     margin-top: 1px;
     color: grey;
 }
+
 h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 100px;
@@ -47,15 +49,35 @@ h2 {
     gap: 10px;
 }
 
+#signUp {
+    display: grid;
+    width: 100%;
+    height: auto;
+    justify-content: space-around;
+    background-image: linear-gradient(#FFF0BE, #fdd464);
+    margin-top: 30px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+#signUp h3{
+    justify-content: space-around;
+    display: flex;
+    margin-bottom: 20px;
+    font-size: xx-large;
+}
+
 #contenedorListas article {
     box-shadow: 10px 5px 5px #CABD91;
     padding: 50px;
     align-items: center;
 }
-#contenedorListas button{
+
+#contenedorListas button {
     margin-right: 10px;
 }
-#btnFavorito{
+
+#btnFavorito {
     background-image: linear-gradient(#001eff, #000752);
 }
 
@@ -83,13 +105,19 @@ h3 {
 p {
     color: #555;
 }
-#email2, #pass3{
+
+#email2,
+#pass3 {
     margin: 0;
     height: 30px;
     width: 300px;
     padding: 0px;
 }
-button, select, #submit{
+
+button,
+select,
+#submit,
+#signUp input{
     background-image: linear-gradient(#ff7b00, #ffb52c);
     color: #fff;
     border: none;
@@ -99,7 +127,13 @@ button, select, #submit{
     transition: background-color 0.3s;
     box-shadow: 10px 5px 5px #CABD91;
 }
-
+#register{
+    justify-content: center;
+    display: inline;
+}
+#signUp input{
+    width: 100%;
+}
 button:hover {
     background-color: #e6830e;
 }
@@ -168,8 +202,8 @@ button:hover {
         transform: rotate(1turn);
     }
 }
- 
-footer{
+
+footer {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: italic;
     background-color: whitesmoke;
@@ -177,16 +211,19 @@ footer{
     display: grid;
     text-align: end;
 }
-footer p{
+
+footer p {
     margin-top: 50px;
     margin-right: 20px;
 }
-#socialMedia{
-    display: flex;    
+
+#socialMedia {
+    display: flex;
     justify-items: start;
     align-items: start;
     margin-top: 10px;
 }
+
 #loader {
     position: fixed;
     left: 0;
@@ -197,7 +234,8 @@ footer p{
     z-index: 9999;
     background: rgba(255, 255, 255, 0.7) url('../como-hacer-loader-cargador-sencillo-html.gif') center no-repeat;
 }
-#logDiv{
+
+#logDiv {
     position: fixed;
     right: 0;
     top: 0;
@@ -208,21 +246,30 @@ footer p{
     margin: 10px;
     align-content: space-around;
     border: 10px linear-gradient(#0c005a, #3d3f76);
-    box-sizing: border-box; 
-    border-radius: 10px; 
+    box-sizing: border-box;
+    border-radius: 10px;
     background-image: linear-gradient(#0c005a, #3d3f76);
 }
-#logDiv input, #logDiv button{
+
+#logDiv input,
+#logDiv button {
     margin-bottom: 3px;
     margin-top: 3px;
     text-align: center;
     box-shadow: none;
+    width: 100%;
 }
-button, #submit{
+
+button,
+#submit, 
+#signUp input{
     background-image: linear-gradient(#ff7b00, #ffb52c);
     transition: background-image 0.3 ease;
 }
-button:hover, #submit:hover{
+
+button:hover,
+#submit:hover,
+#signUp input:hover {
     background-image: linear-gradient(#ff0000, #ffbf00);
 }
 
@@ -236,7 +283,8 @@ button:hover, #submit:hover{
     max-height: 100%;
 }
 
-#filtros button, #filtros select{
+#filtros button,
+#filtros select {
     background-image: linear-gradient(#ff7b00, #ffb52c);
     color: #fff;
     border: none;
@@ -247,10 +295,13 @@ button:hover, #submit:hover{
     transition: background-image 0.3s;
     box-shadow: 10px 5px 5px #CABD91;
 }
-#filtros button:hover, #filtros select:hover{
+
+#filtros button:hover,
+#filtros select:hover {
     background-image: linear-gradient(#1900ff, #0b002b);
 }
-#container{
+
+#container {
     width: 100%;
     height: 100px;
     background: linear-gradient(45deg, #ffb700, #fcffb3);
@@ -258,7 +309,8 @@ button:hover, #submit:hover{
     align-items: center;
     justify-content: center;
 }
-#paginacion{
+
+#paginacion {
     display: flex;
     align-items: center;
     color: #383838;
@@ -267,16 +319,20 @@ button:hover, #submit:hover{
     justify-content: center;
     padding-bottom: 10px;
 }
-#paginacion ul{
+
+#paginacion ul {
     margin: 20px 30px;
 }
-#paginacion button{
+
+#paginacion button {
     margin-right: 30px;
     margin-left: 30px;
 }
+
 .icocor3 {
     font-size: 30px;
-} 
+}
+
 #paginacion ul li {
     display: inline-block;
     margin: 0 10px;
@@ -290,26 +346,30 @@ button:hover, #submit:hover{
     cursor: pointer;
 }
 
-.btn1, .btn2{
+.btn1,
+.btn2 {
     display: inline-flex;
     align-items: center;
     font-size: 22px;
     font-weight: 500;
-    color:white;
+    color: white;
     background: transparent;
     outline: none;
     box-shadow: none;
     border: none;
     cursor: pointer;
 }
-#searchInput{
+
+#searchInput {
     display: flex;
 }
-#searchText{
+
+#searchText {
     font-family: 'Courier New', Courier, monospace;
     margin-right: 7px;
     background-image: linear-gradient(45deg, #ffb700, #fcffb3);
 }
+
 /* Media Queries */
 
 /* Small devices (landscape phones, less than 768px) */
@@ -317,10 +377,12 @@ button:hover, #submit:hover{
     h1 {
         font-size: 50px;
     }
+
     h2 {
         font-size: 18px;
         margin-left: 20px;
     }
+
     #contenedorListas {
         grid-template-columns: 1fr;
     }
@@ -331,10 +393,12 @@ button:hover, #submit:hover{
     h1 {
         font-size: 75px;
     }
+
     h2 {
         font-size: 20px;
         margin-left: 50px;
     }
+
     #contenedorListas {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -345,10 +409,12 @@ button:hover, #submit:hover{
     h1 {
         font-size: 85px;
     }
+
     h2 {
         font-size: 22px;
         margin-left: 100px;
     }
+
     #contenedorListas {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -359,10 +425,12 @@ button:hover, #submit:hover{
     h1 {
         font-size: 100px;
     }
+
     h2 {
         font-size: 24px;
         margin-left: 400px;
     }
+
     #contenedorListas {
         grid-template-columns: repeat(3, 1fr);
     }

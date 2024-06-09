@@ -437,4 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
 
 
+
+      //FAVOTITOS (DEMO)
+      
 })
