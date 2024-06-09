@@ -16,11 +16,13 @@
             <input type="email" id="email2" name="email2" placeholder="EMAIL"><br>
             <input type="password" id="pass3" name="pass3" placeholder="PASSWORD"><br>
             <input type="submit" id="submit" value="LOG IN">
-            <button id="regButton">REGISTER</button>
+            <div id="logout">
+                <button id="salir">Logout</button>
+            </div>
         </div>
     </form>
     <header>
-        <div class="rainbow"><button id="botonFinal">IR AL FINAL</button></div>
+        <div class="rainbow"><button id="botonFinal">SIGN UP!</button></div>
         <h2>NYTimes</h2>
         <h1>BEST SELLERS</h1>
         <h2 id="bottom">LISTS</h2>
@@ -47,23 +49,44 @@
                 <input type="text" id="searchText" name="searchText" placeholder="Search list...">
                 <button id="searchButton">SEARCH</button>
             </div>
+            <p id="message"></p>
         </div>
         <section id="contenedorListas"></section>
     </main>
     <script src="../js/script.js"></script>
-<div id="paginacion">
-    <button id="atras">BACK</button>
-    <span id="informacion-pagina"></span>
-    <button id="siguiente">NEXT</button>
-</div>
-<footer>
-    <div id="socialMedia">
-        <a href="https://www.linkedin.com/in/antonio-gonz%C3%A1lez-torres-35b74522a/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png" height="50px" width="50px" alt="Linkedin"/></a></li>
-        <a href="https://www.tiktok.com/@nitolez" target="_blank"><img src="https://cdn.pixabay.com/photo/2021/01/30/06/42/tiktok-5962992_1280.png" width="51px" height="51px" alt="tiktok"/></a>
-        <a href="https://www.youtube.com/channel/UCopsTgFu3D_SoIaE7lvwN3Q" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" width="70" height="50" alt="Youtube"></a>
+    <div id="paginacion">
+        <button id="atras">BACK</button>
+        <span id="informacion-pagina"></span>
+        <button id="siguiente">NEXT</button>
     </div>
-    <p>Creado por Antonio el más guapo de the Bridge</p>
-</footer>
+    <div>
+        <h3>SIGN UP!</h3>
+        <form id="form1" action="#" method="POST">
+            <div>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" placeholder="Introduce email..."><br>
+                <label for="pass">Password:</label><br>
+                <input type="password" id="pass" name="pass" placeholder="Introduce password..."><br>
+                <label for="pass2">Repite password:</label><br>
+                <input type="password" id="pass2" name="pass2" placeholder="Repite password..."><br><br>
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
+    </div>
+    <footer>
+        <div id="socialMedia">
+            <a href="https://www.linkedin.com/in/antonio-gonz%C3%A1lez-torres-35b74522a/" target="_blank"><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png"
+                    height="50px" width="50px" alt="Linkedin" /></a></li>
+            <a href="https://www.tiktok.com/@nitolez" target="_blank"><img
+                    src="https://cdn.pixabay.com/photo/2021/01/30/06/42/tiktok-5962992_1280.png" width="51px"
+                    height="51px" alt="tiktok" /></a>
+            <a href="https://www.youtube.com/channel/UCopsTgFu3D_SoIaE7lvwN3Q" target="_blank"><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" width="70" height="50"
+                    alt="Youtube"></a>
+        </div>
+        <p>Creado por Antonio el más guapo de the Bridge</p>
+    </footer>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
 
@@ -74,4 +97,5 @@
 
     <script src="./script.js"></script>
 </body>
+
 </html>
