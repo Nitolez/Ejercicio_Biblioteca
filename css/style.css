@@ -292,6 +292,7 @@ button:hover,
     cursor: pointer;
     display: flex;
     border-radius: 5px;
+    align-items: center;
     transition: background-image 0.3s;
     box-shadow: 10px 5px 5px #CABD91;
 }
