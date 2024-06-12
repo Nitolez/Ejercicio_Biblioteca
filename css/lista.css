@@ -12,12 +12,46 @@ header {
     padding: 20px 0;
 }
 
+button,
+#submit,
+#signUp input {
+    background-image: linear-gradient(#ff7b00, #ffb52c);
+    transition: background-image 0.3 ease;
+}
+
+button:hover,
+#submit:hover,
+#signUp input:hover {
+    background-image: linear-gradient(#ff0000, #ffbf00);
+}
+
 #filtros {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     padding: 10px;
     background-color: white;
-    display: flex;
     justify-content: space-evenly;
+    max-width: 100%;
+}
+
+#filtros button,
+#filtros select {
+    background-image: linear-gradient(#ff7b00, #ffb52c);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    transition: background-image 0.3s;
+    box-shadow: 10px 5px 5px #CABD91;
+    margin: 5px;
+}
+
+#filtros button:hover,
+#filtros select:hover {
+    background-image: linear-gradient(#1900ff, #0b002b);
 }
 
 #updated, #filtros button{

@@ -16,32 +16,28 @@ header {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 24px;
     text-align: right;
-    margin-right: 400px;
-    margin-bottom: 1px;
-    margin-top: 1px;
+    margin: 1px 400px 1px 0;
     color: grey;
 }
 
 h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 100px;
-    margin-top: 1px;
-    margin-bottom: 1px;
+    margin: 1px 0;
 }
 
 h2 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 24px;
     text-align: left;
-    margin-left: 400px;
-    margin-bottom: 1px;
+    margin: 1px 0 1px 400px;
     color: grey;
 }
 
 #contenedorListas {
     width: 100%;
     background-color: #FFF0BE;
-    margin: 0px;
+    margin: 0;
     padding: 10px;
     height: auto;
     display: grid;
@@ -56,11 +52,10 @@ h2 {
     justify-content: space-around;
     background-image: linear-gradient(#FFF0BE, #fdd464);
     margin-top: 30px;
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding: 70px 0;
 }
 
-#signUp h3{
+#signUp h3 {
     justify-content: space-around;
     display: flex;
     margin-bottom: 20px;
@@ -111,13 +106,13 @@ p {
     margin: 0;
     height: 30px;
     width: 300px;
-    padding: 0px;
+    padding: 0;
 }
 
 button,
 select,
 #submit,
-#signUp input{
+#signUp input {
     background-image: linear-gradient(#ff7b00, #ffb52c);
     color: #fff;
     border: none;
@@ -127,13 +122,16 @@ select,
     transition: background-color 0.3s;
     box-shadow: 10px 5px 5px #CABD91;
 }
-#register{
+
+#register {
     justify-content: center;
     display: inline;
 }
-#signUp input{
+
+#signUp input {
     width: 100%;
 }
+
 button:hover {
     background-color: #e6830e;
 }
@@ -242,10 +240,9 @@ footer p {
     width: auto;
     height: auto;
     display: grid;
-    padding: 5px;
-    margin: 10px;
+    padding: 10px; /* Reducido de 5px a 10px */
+    margin: 5px; /* Reducido de 10px a 5px */
     align-content: space-around;
-    border: 10px linear-gradient(#0c005a, #3d3f76);
     box-sizing: border-box;
     border-radius: 10px;
     background-image: linear-gradient(#0c005a, #3d3f76);
@@ -253,16 +250,16 @@ footer p {
 
 #logDiv input,
 #logDiv button {
-    margin-bottom: 3px;
-    margin-top: 3px;
+    margin: 2px 0; /* Reducido de 3px a 2px */
     text-align: center;
     box-shadow: none;
     width: 100%;
 }
 
+
 button,
-#submit, 
-#signUp input{
+#submit,
+#signUp input {
     background-image: linear-gradient(#ff7b00, #ffb52c);
     transition: background-image 0.3 ease;
 }
@@ -274,13 +271,12 @@ button:hover,
 }
 
 #filtros {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     padding: 10px;
     background-color: white;
-    display: flex;
     justify-content: space-evenly;
     max-width: 100%;
-    max-height: 100%;
 }
 
 #filtros button,
@@ -295,6 +291,7 @@ button:hover,
     align-items: center;
     transition: background-image 0.3s;
     box-shadow: 10px 5px 5px #CABD91;
+    margin: 5px;
 }
 
 #filtros button:hover,
@@ -326,8 +323,7 @@ button:hover,
 }
 
 #paginacion button {
-    margin-right: 30px;
-    margin-left: 30px;
+    margin: 0 30px;
 }
 
 .icocor3 {
@@ -387,6 +383,11 @@ button:hover,
     #contenedorListas {
         grid-template-columns: 1fr;
     }
+
+    #bottom {
+        margin-right: 20px;
+        text-align: center;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -402,6 +403,11 @@ button:hover,
 
     #contenedorListas {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    #bottom {
+        margin-right: 50px;
+        text-align: right;
     }
 }
 
@@ -419,6 +425,11 @@ button:hover,
     #contenedorListas {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    #bottom {
+        margin-right: 100px;
+        text-align: right;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -435,8 +446,9 @@ button:hover,
     #contenedorListas {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    #bottom {
+        margin-right: 400px;
+        text-align: right;
+    }
 }
-
-
-
-/*https://www.youtube.com/watch?v=Ejdir7bwCpk*/

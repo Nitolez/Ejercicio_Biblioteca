@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //EVENTOS
 
-
+    //Boton que te lleva al final de la pagina
     document.getElementById('botonFinal').addEventListener('click', () => {
         window.scrollTo({
             top: document.documentElement.scrollHeight,
@@ -55,13 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Ocultar el botón cuando se alcanza el final del documento
+
     window.addEventListener('scroll', function () {
-        let button = document.getElementById('botonFinal'); // Asigna el ID correcto de tu botón
+        let button = document.getElementById('botonFinal'); 
         let rainbowBorder = this.document.querySelector('.rainbow');
         let scrollPosition = window.scrollY
 
         if (scrollPosition >= (document.documentElement.scrollHeight - window.innerHeight)) {
-            button.style.display = 'none'; // Oculta el botón cuando se alcanza el final del documento
+            button.style.display = 'none'; 
             rainbowBorder.style.display = 'none';
         } else {
             button.style.display = 'block'; // Muestra el botón en cualquier otra posición
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    //Para el loader de la pagina
     loader.addEventListener('click', () => {
         loader.remove()
     })
@@ -77,7 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetFilters = (filtro1) => {
         filtro1.value = "default"
     };
-    // Eventos de ordenación
+
+    // Eventos de ordenar listas
     orderOldestSelect.addEventListener('change', async () => {
         const listas = await getListas();
         let listasOrdenadas;
@@ -91,8 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
             default:
                 listasOrdenadas = listas;
         }
-        baseDeDatos = listasOrdenadas; // Ordenar y guardar en baseDeDatos
-        paginaActual = 1; // Resetear la página actual
+        baseDeDatos = listasOrdenadas; 
+        paginaActual = 1; 
         renderizar();
         resetFilters(filtroUpdated);
         resetFilters(orderNewestSelect);
@@ -111,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
             default:
                 listasOrdenadas = listas;
         }
-        baseDeDatos = listasOrdenadas; // Ordenar y guardar en baseDeDatos
-        paginaActual = 1; // Resetear la página actual
+        baseDeDatos = listasOrdenadas; 
+        paginaActual = 1; 
         renderizar();
         resetFilters(filtroUpdated);
         resetFilters(orderOldestSelect);
@@ -132,38 +136,38 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (ev.target.value === 'weekly') {
             listasFiltradas = listas.filter(element => element.updated === 'WEEKLY');
         }
-        baseDeDatos = listasFiltradas; // Filtrar y guardar en baseDeDatos
+        baseDeDatos = listasFiltradas;
         paginaActual = 1;
         pintarListas(listasFiltradas);
         renderizar()
     });
 
     searchButton.addEventListener('click', () => {
-        const textoBusqueda = textSearch.value.trim(); // Obtener el texto de búsqueda
-        const listasFiltradas = filtrarPorTitulo(listaCompleta, textoBusqueda); // Filtrar las listas por título
+        const textoBusqueda = textSearch.value.trim(); // el trim  elimina los espacios en blanco en ambos extremos del string
+        const listasFiltradas = filtrarPorTitulo(listaCompleta, textoBusqueda); 
         baseDeDatos = listasFiltradas;
-        paginaActual = 1; // Reiniciar la página actual
-        renderizar(); // Volver a renderizar la paginación
+        paginaActual = 1; 
+        renderizar(); 
     });
+
     //para que al presionar intro se busque
     textSearch.addEventListener('keydown', (event) => {
         if (event.key === "Enter") {
-            const textoBusqueda = textSearch.value.trim(); // Obtener el texto de búsqueda
-            const listasFiltradas = filtrarPorTitulo(listaCompleta, textoBusqueda); // Filtrar las listas por título
-            baseDeDatos = listasFiltradas; // Actualizar la lista baseDeDatos con los resultados filtrados
-            paginaActual = 1; // Reiniciar la página actual
-            renderizar(); // Volver a renderizar la paginación
+            const textoBusqueda = textSearch.value.trim();
+            const listasFiltradas = filtrarPorTitulo(listaCompleta, textoBusqueda);
+            baseDeDatos = listasFiltradas; 
+            paginaActual = 1;
+            renderizar(); 
         }
     });
 
-    // Eventos de ordenación
     botonSortAZ.addEventListener('click', async () => {
         resetFilters(orderNewestSelect);
         resetFilters(orderOldestSelect);
         resetFilters(filtroUpdated);
         const listas = await getListas();
-        baseDeDatos = ordenarAZ(listas); // Ordenar y guardar en baseDeDatos
-        paginaActual = 1; // Resetear la página actual
+        baseDeDatos = ordenarAZ(listas); 
+        paginaActual = 1; 
         renderizar();
     });
 
@@ -172,8 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resetFilters(orderOldestSelect);
         resetFilters(filtroUpdated);
         const listas = await getListas();
-        baseDeDatos = ordenarZA(listas); // Ordenar y guardar en baseDeDatos
-        paginaActual = 1; // Resetear la página actual
+        baseDeDatos = ordenarZA(listas); 
+        paginaActual = 1; 
         renderizar();
     });
 
@@ -181,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //FUNCIONES
 
-    //Almacenar y pintar las listas en un array
+    //Almacenar, pintar y generar los elementos de las listas
     const getListas = async () => {
         try {
             const respuesta = await fetch("../js/text.json");
@@ -222,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         favorito.innerHTML = '<img src="../imgs/corazonVacio.png" width="15px" heigh="15px">'
         favorito.id = 'btnFavorito'
 
+        //Para añadir un evento que cambie el corazon de los favoritos si le damos click
         favorito.addEventListener('click', () => {
             if (favorito.innerHTML === '<img src="../imgs/corazonVacio.png" width="15px" heigh="15px">') {
                 favorito.innerHTML = ''
@@ -232,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
 
+        //Para que cada link de cada lista nos lleve a otra página de esa lista
         linkLista.addEventListener('click', () => {
             const url = `lista.html?list=${element.list_name_encoded}`;
             window.location.href = url;
@@ -243,32 +249,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //FILTROS DE TITULO, AZ Y UPDATED 
 
-    // Función para filtrar listas por título
+    // Filtrar listas por título
     const filtrarPorTitulo = (listas, textoBusqueda) => {
         return listas.filter(element => element.list_name.toLowerCase().includes(textoBusqueda.toLowerCase()));
     };
 
-    // Función para ordenar listas A-Z
+    // Ordenar listas A-Z
     const ordenarAZ = (listas) => {
         return listas.sort((a, b) => a.list_name.localeCompare(b.list_name));
     };
 
-    // Función para ordenar listas Z-A
+    // Ordenar listas Z-A
     const ordenarZA = (listas) => {
         return listas.sort((a, b) => b.list_name.localeCompare(a.list_name));
     };
 
-    // Inicializar listas al cargar la página
+    // PAra inicializar listas al cargar la página
     getListas()
         .then(listas => {
-            baseDeDatos = listas; // Guardar listas en baseDeDatos
-            listaCompleta = listas; // Guardar listas en listaCompleta
+            baseDeDatos = listas; 
+            listaCompleta = listas;
             renderizar();
         })
         .catch(console.error);
 
 
-    // Funciones de ordenación por fecha
+    // Ordenar por fecha
+    //sort ordena los elementos de un array
     const ordenarPorFechaMasAntiguaAsc = (listas) => {
         return listas.sort((a, b) => new Date(a.oldest_published_date) - new Date(b.oldest_published_date));
     };
@@ -305,10 +312,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const corteDeInicio = (paginaActual - 1) * elementosPorPagina;
         const corteDeFinal = corteDeInicio + elementosPorPagina;
         return baseDeDatos.slice(corteDeInicio, corteDeFinal);
+        //slice devuelve una copia de una parte del array dentro de un nuevo array empezando por inicio hasta fin
     }
 
     function obtenerPaginasTotales() {
         return Math.ceil(baseDeDatos.length / elementosPorPagina);
+        //math.ceil redondea y devuelve el número entero más pequeño mayor o igual a un número determinado.
     }
 
     function gestionarBotones() {
@@ -332,16 +341,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const rebanadaDatos = obtenerRebanadaDeBaseDeDatos(paginaActual);
         pintarListas(rebanadaDatos);
         gestionarBotones();
-        informacionPaginaDOM.textContent = `${paginaActual}/${obtenerPaginasTotales()}`;
+        informacionPaginaDOM.textContent = `Page ${paginaActual} of ${obtenerPaginasTotales()}`;
     }
 
-    // Eventos
     botonAtrasDOM.addEventListener("click", retrocederPagina);
     botonSiguienteDOM.addEventListener("click", avanzarPagina);
 
-    // Inicio
-    renderizar(); // Mostramos la primera página nada más que carge la página
-
+    //Invocamos renderizar que activa todo el proceso
+    renderizar();
 
 
 
@@ -438,6 +445,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-      //FAVOTITOS (DEMO)
+      //FAVOTITOS (DEMO) Nocompletado
       
 })
