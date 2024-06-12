@@ -223,16 +223,30 @@ footer p {
 }
 
 #loader {
-    position: fixed;
-    left: 0;
+    position: fixed; /* Mantiene el loader en la misma posición mientras se desplaza */
     top: 0;
-    width: 100%;
-    margin: 10px;
-    height: 100%;
-    z-index: 9999;
-    background: rgba(255, 255, 255, 0.7) url('../como-hacer-loader-cargador-sencillo-html.gif') center no-repeat;
+    left: 0;
+    width: 100%; /* Ocupa toda la anchura de la pantalla */
+    height: 100%; /* Ocupa toda la altura de la pantalla */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+    display: flex; /* Utiliza flexbox para centrar el contenido */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    z-index: 9999; 
+}
+.loader-inner {
+    border: 16px solid #f3f3f3; /* Color del borde */
+    border-top: 16px solid #3498db; /* Color de la parte superior del spinner */
+    border-radius: 50%; /* Hace que sea redondo */
+    width: 120px; /* Ancho del spinner */
+    height: 120px; /* Alto del spinner */
+    animation: spin 2s linear infinite; /* Animación de giro */
 }
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 #logDiv {
     position: fixed;
     right: 0;
