@@ -1,6 +1,6 @@
 # NYTimes BEST SELLERS
 
-Este proyecto es una página web que muestra las listas de los libros más vendidos según el New York Times. La página incluye filtros y funciones de búsqueda para ayudar a los usuarios a encontrar rápidamente los libros que les interesan.
+Este proyecto es una página web que muestra las listas de los libros más vendidos según el New York Times. La página incluye filtros y funciones de búsqueda para ayudar a los usuarios a encontrar los libros que les interesan.
 
 ## Tabla de Contenidos
 - [Descripción](#descripción)
@@ -20,9 +20,6 @@ La página web permite a los usuarios ver y filtrar las listas de los libros má
 - Buscar listas específicas mediante una barra de búsqueda.
 - Navegar entre diferentes páginas de resultados.
 
-## Estructura del Proyecto
-
-
 ## Tecnologías Utilizadas
 
 - HTML5
@@ -31,6 +28,13 @@ La página web permite a los usuarios ver y filtrar las listas de los libros má
 - Firebase (para la autenticación y base de datos)
 
 ## Instalación
+### Requisitos Previos
+
+- Python 3.x
+- Django
+- Django Rest Framework
+- React
+- npm
 
 1. Clona este repositorio:
     ```bash
@@ -46,9 +50,15 @@ La página web permite a los usuarios ver y filtrar las listas de los libros má
 
 ## Uso
 
-1. Abre `index.html` en tu navegador.
-2. Usa los filtros y la barra de búsqueda para encontrar las listas de libros que te interesan.
-3. Navega entre las diferentes páginas de resultados utilizando los botones "BACK" y "NEXT".
+Una vez que el servidor backend y la aplicación frontend están corriendo, puedes acceder a la página web en tu navegador en http://localhost:3000.
+
+## Características
+
+1. Autenticación: Registro, inicio de sesión y cierre de sesión.
+2. Listas de libros: Visualiza las listas de los libros más vendidos del NYTimes.
+3. Favoritos: Añade libros a tu lista de favoritos.
+4. Filtros y búsqueda: Filtra las listas por categoría, busca libros por título o autor.
+5. Ordenar: Ordena las listas por diferentes criterios.
 
 ## Funciones
 
