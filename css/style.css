@@ -236,7 +236,7 @@ footer p {
 }
 .loader-inner {
     border: 16px solid #f3f3f3; /* Color del borde */
-    border-top: 16px solid #3498db; /* Color de la parte superior del spinner */
+    border-top: 16px solid #ff8c00; /* Color de la parte superior del spinner */
     border-radius: 50%; /* Hace que sea redondo */
     width: 120px; /* Ancho del spinner */
     height: 120px; /* Alto del spinner */
@@ -247,6 +247,7 @@ footer p {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
 #logDiv {
     position: fixed;
     right: 0;

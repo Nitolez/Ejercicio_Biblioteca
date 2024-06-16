@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Almacenar, pintar y generar los elementos de las listas
     const getListas = async () => {
         try {
-            const respuesta = await fetch("../js/text.json");
+            const respuesta = await fetch("./js/text.json");
 
             if (respuesta.ok) {
                 const data = await respuesta.json();
@@ -223,17 +223,17 @@ document.addEventListener('DOMContentLoaded', () => {
         fechaNuevo.innerText = 'NEWEST: ' + element.newest_published_date;
         actualizacion.innerText = 'UPDATED: ' + element.updated;
         linkLista.innerText = 'SEE MORE ->';
-        favorito.innerHTML = '<img src="../imgs/corazonVacio.png" width="15px" heigh="15px">'
+        favorito.innerHTML = '<img src="./imgs/corazonVacio.png" width="15px" heigh="15px">'
         favorito.id = 'btnFavorito'
 
         //Para añadir un evento que cambie el corazon de los favoritos si le damos click
         favorito.addEventListener('click', () => {
-            if (favorito.innerHTML === '<img src="../imgs/corazonVacio.png" width="15px" heigh="15px">') {
+            if (favorito.innerHTML === '<img src="./imgs/corazonVacio.png" width="15px" heigh="15px">') {
                 favorito.innerHTML = ''
-                favorito.innerHTML = '<img src="../imgs/corazonLleno.png" width="15px" heigh="15px">'
-            } else if (favorito.innerHTML === '<img src="../imgs/corazonLleno.png" width="15px" heigh="15px">') {
+                favorito.innerHTML = '<img src="./imgs/corazonLleno.png" width="15px" heigh="15px">'
+            } else if (favorito.innerHTML === '<img src="./imgs/corazonLleno.png" width="15px" heigh="15px">') {
                 favorito.innerHTML = ''
-                favorito.innerHTML = '<img src="../imgs/corazonVacio.png" width="15px" heigh="15px">'
+                favorito.innerHTML = '<img src="./imgs/corazonVacio.png" width="15px" heigh="15px">'
             }
         })
 
