@@ -276,10 +276,23 @@ button:hover {
     h1 {
         font-size: 50px;
     }
-    h2, #bottom {
+    
+    h2 {
         font-size: 18px;
-        margin-left: 20px;
-        margin-right: 20px;
+        text-align: center;
+        margin: 0;
+    }
+
+    #bottom{
+        margin: 0;
+        text-align: center;
+    }
+    .rainbow{
+        width: 20%;
+    }
+    #botonAtras{
+        width: 100%;
+        font-size: 10px;
     }
     #contenedorLibros {
         grid-template-columns: 1fr;
@@ -302,11 +315,17 @@ button:hover {
     h1 {
         font-size: 75px;
     }
-    h2, #bottom {
-        font-size: 20px;
-        margin-left: 50px;
-        margin-right: 50px;
+    h2 {
+        font-size: 18px;
+        text-align: center;
+        margin: 0;
     }
+
+    #bottom{
+        margin: 0;
+        text-align: center;
+    }
+
     #contenedorLibros {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -317,11 +336,17 @@ button:hover {
     h1 {
         font-size: 85px;
     }
-    h2, #bottom {
-        font-size: 22px;
-        margin-left: 100px;
-        margin-right: 100px;
+    h2 {
+        font-size: 18px;
+        text-align: center;
+        margin: 0;
     }
+
+    #bottom{
+        margin: 0;
+        text-align: center;
+    }
+
     #contenedorLibros {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -332,11 +357,17 @@ button:hover {
     h1 {
         font-size: 100px;
     }
-    h2, #bottom {
-        font-size: 24px;
-        margin-left: 400px;
-        margin-right: 400px;
+    h2 {
+        font-size: 18px;
+        text-align: center;
+        margin: 0;
     }
+
+    #bottom{
+        margin: 0;
+        text-align: center;
+    }
+
     #contenedorLibros {
         grid-template-columns: repeat(3, 1fr);
     }

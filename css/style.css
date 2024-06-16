@@ -392,16 +392,25 @@ button:hover,
 
     h2 {
         font-size: 18px;
-        margin-left: 20px;
+        text-align: center;
+        margin: 0;
     }
 
+    #bottom{
+        margin: 0;
+        text-align: center;
+
+    }
     #contenedorListas {
         grid-template-columns: 1fr;
     }
 
-    #bottom {
-        margin-right: 20px;
-        text-align: center;
+    .rainbow{
+        width: 20%;
+    }
+    #botonFinal{
+        width: 100%;
+        font-size: 10px;
     }
 }
 
@@ -412,18 +421,22 @@ button:hover,
     }
 
     h2 {
-        font-size: 20px;
-        margin-left: 50px;
+        font-size: 18px;
+        text-align: center;
+        margin: 0;
+    }
+
+    #bottom{
+        margin: 0;
+        text-align: center;
+
     }
 
     #contenedorListas {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    #bottom {
-        margin-right: 50px;
-        text-align: right;
-    }
+
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -433,18 +446,22 @@ button:hover,
     }
 
     h2 {
-        font-size: 22px;
-        margin-left: 100px;
+        font-size: 18px;
+        text-align: center;
+        margin: 0;
+    }
+
+    #bottom{
+        margin: 0;
+        text-align: center;
+
     }
 
     #contenedorListas {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    #bottom {
-        margin-right: 100px;
-        text-align: right;
-    }
+
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
