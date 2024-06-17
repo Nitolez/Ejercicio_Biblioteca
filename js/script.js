@@ -71,10 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    //Para el loader de la pagina
-    loader.addEventListener('click', () => {
-        loader.remove()
-    })
+    const removeLoader = () => {
+        loader.remove();
+    }
+
+    setTimeout(removeLoader, 2000);
 
     // Funcion para resetear filters, para ponerla cuando clickemos en cada filtro
     const resetFilters = (filtro1) => {
